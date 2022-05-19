@@ -22,8 +22,7 @@ import sekar.putri.project.ktp.coba.exceptions.PreexistingEntityException;
  */
 public class DummyJpaController implements Serializable {
 
-    public DummyJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public DummyJpaController() {
     }
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("sekar.putri_project.ktp_jar_0.0.1-SNAPSHOTPU");
 
@@ -31,8 +30,7 @@ public class DummyJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public DummyJpaController() {
-    }
+
 
     public void create(Dummy dummy) throws PreexistingEntityException, Exception {
         EntityManager em = null;
