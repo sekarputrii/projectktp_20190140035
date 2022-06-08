@@ -12,18 +12,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <a href="/create">Create</a>
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/data">Data Dummy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Halaman Utama</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <a href="/ktp/create" class="btn btn-primary center-block">Tambah Data Dummy</a>
         <div class="table">
-            <table class="table allign-middle">
+            <table class="table table-bordered table-striped">
                 <tr>
                     <th>NIK</th>
                     <th>Tanggal Lahir</th>
-                    <th>Foto</th>
+                    <th>Gambar</th>
+                    <th>Aksi</th>
                 </tr>
                 <tr th:each="godummy:${godummy}">
                     <td th:text="${godummy.id}"></td>
                     <td th:text="${#dates.format(godummy.tanggal,'dd-MMM-yyyy')}"></td>
-                    <td> <img th:src="@{${'/gambar?id='+ godummy.id}}" alt="gambar" width="100"> </td>
+                    <td> <img th:src="@{${'/gambar?id='+ godummy.id}}" alt="gambar" width="100"></td>
+                    <td>
+                        <a th:href="@{/detail/{id}{id=$godummy.id}}" class="btn btn-secondary center-block">Detail</a>
+                        <a th:href="@{/edit/{id}(id=${godummy.id})}" class="btn btn-warning center-block">Edit</a>
+                        <a th:href="@{/delete/{id}(id=${godummy.id})}" class="btn btn-danger center-block" onclick="return confirm('hapus?')">Delete</a>
+                    </td>
                 </tr>
             </table>
         </div>

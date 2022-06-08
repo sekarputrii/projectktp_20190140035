@@ -96,7 +96,6 @@ public class Dummy implements Serializable {
 
     @Override
     public String toString() {
-        return "sekar.putri.project.ktp.coba.Dummy[ id=" + id + " ]";
+        return "sekar.putri.project.ktp.coba.Dummy[ id = " + id + " ]";
     }
-    
 }
